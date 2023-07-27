@@ -1,0 +1,39 @@
+<!--
+    Criado atravéz de "ng g component produtos/detalhes-produto --module produtos.module" , 
+        dentro de "produtos.module" ele ja declara automaticamente o componente devido ao
+        uso da flag --module .
+    Dentro de "produtos-routing.module.ts" adiciona o path que ira servir a página 
+        "produtos/id" , ele irá abrir o component: "DetalhesProdutoComponent" .
+-->
+
+<section class="product__container">
+    <div class="product-image__container">
+        <img [src]="produto?.imagem">
+        <!--Faremos o data-binding da imagemm daquele produto-->
+    
+    </div>
+    <div class="produtc-description__container">
+        <h2 class="product__name">{{produto?.descricao}}</h2>
+        <!--Irá puxar a informação de descrição do produto da arraylist-->
+        <h2 class="product__price">{{produto?.preco |currency:"BRL"}}</h2>
+        <!--Irá puxar a informação de preço do produto da arraylist e converterá para BRL-->
+        <p>Estoque disponível: </p>
+        <label>
+            Quantidade:
+            <input type="number" [(ngModel)]="quantidade" min="1">
+            <!--
+                Irá fazer um "two-way-data-bayding". Quando digite essa informação fique 
+                armazenada dentro de uma propriedade do componente.
+
+                Diz que o ngModel será "quantidade". Define que o minimo será 1
+            -->
+            unidade(s)
+        </label>
+        <p class="product__avaiability">
+            {{produto?.quantidadeEstoque}} unidade(s) em estoque
+            <!--Puxa da array o valor da quantidade em estoque de cada item-->
+        </p>
+        <button (click)="adicionarAoCarrinho()">Adicionar ao carrinho</button>
+        <!--Chama o método adicionarAoCarrinho() ao clique do botão-->
+    </div>
+</section>

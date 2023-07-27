@@ -1,0 +1,62 @@
+<!--
+    Criado através do "ng generate module produtos --route produtos --module app.module"
+-->
+
+<section class="product-list">
+    <!--
+        Classes utilizadas do "produtos.component.css"
+    -->
+
+    <div class="product-list__card" *ngFor="let produto of produtos">
+        <!--
+            Para carregar uma lista temos que usar uma diretiva, diretiva essa que é 
+                definida no comando *ngFor="let produto of produtos" , assim iremos
+                pegar produto dentro dos meus produtos.
+            Mas antes temos que ir em "produtos.component.ts" e adicionar a propriedade
+                de produtos. Informo lá que o tipo será IProdutos e o que tem dentro dela
+                são os produtos do vetor encontrado em "produtos.ts".
+            -->
+
+        <a routerLink="/produtos/{{produto.id}}" class="product-list__link">
+            <!--
+                Adiciona também o link para cada um dos produtos, quando clicar ele vai informar 
+                    "produto/id" , 
+            -->
+
+            <img [src]="produto.imagem">
+            <!--
+                Informo que a imagem irá vim dentro de produto.imagem, assim quando abrir o
+                    site irá carregar todas imagens dos produtos.
+            -->
+
+            <h2 class="product-item__name">
+                {{produto.descricao}}
+                <!--
+                Informo que a descrição irá vim dentro de produto.descricao, assim quando 
+                    abrir o site irá carregar todas descrição dos produtos.
+            -->
+
+            </h2>
+            <p class="product-item__price">
+                {{produto.preco |currency: "BRL"}}
+                <!--
+                Informo que o preço irá vim dentro de produto.preco, assim quando 
+                    abrir o site irá carregar todos os preços dos produtos.
+                
+                Há atravéz do pipe a formatação no formato do preço, colocando "|currency", BRL quer 
+                    dizer que é Reais.
+            -->
+
+            </p>
+            <p class="product-item__price-description">
+                {{produto.descricaoPreco}}
+                <!--
+                Informo que a descrição do preço irá vim dentro de produto.descricaoPreco, assim quando 
+                    abrir o site irá carregar todas descrição de preço dos produtos.
+            -->
+
+            </p>
+            <button class="product-item__buy-button" type="button">Comprar</button>
+        </a>
+    </div>
+</section>

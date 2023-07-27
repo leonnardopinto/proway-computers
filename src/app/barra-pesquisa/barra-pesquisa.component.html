@@ -1,0 +1,10 @@
+<!--Criado atravéz do comando "ng g component barra-pesquisa"-->
+
+<form class="search-form" (ngSubmit)="pesquisar()">
+    <!--Na barra de pesquisa, quando dispará o evento o ngSubmit irá chamar uma função-->
+
+    <input type="text" name="descricao" [(ngModel)]="descricao">
+    <!--trás a descrição que ira enviar para a pessoa com isso utilizaremos o ngModel-->
+
+    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>

@@ -1,0 +1,48 @@
+<!--
+    Criado através de "ng g module carrinho --route carrinho --module app.module". 
+-->
+
+<h2 class="cart-title">Carrinho</h2>
+<div *ngIf="itensCarrinho.length > 0; else semProduto">
+    <!--
+        Utiliza a diretiva "ngIf" e queremos que apareca a lista de itens quando itensCarrinho tiver no minimo 1 item (maior que 0).
+        Se não chama o template semProduto.
+    -->
+    <ul>
+        <li *ngFor="let itemCarrinho of itensCarrinho">
+            <!--Utiliza a diretiva ngFor, para cada item do meu carrinho dentro do vetor de itens carrinho:...-->
+
+            <img [src]="itemCarrinho.imagem"/>
+            <!--...vou querer que a imagem venha desse item carrinho.imagem-->
+
+            <p>{{itemCarrinho.descricao}}</p>
+            <!--...vou querer que a descrição venha de itemCarrinho.descricao-->
+
+            <p>{{itemCarrinho.preco | currency: "BRL"}}</p>
+            <!--...vou querer que a preço venha de itemCarrinho.preco e formata para Reais-->
+
+            <label>
+                Quantidade:
+                <input type="number" [(ngModel)]="itemCarrinho.quantidade" (change)="calculaTotal()">
+                <!--Importa o FormsModule no "carrinho.module.ts" para utilizar o ngModule e depois associa a itemCarrinho.quantidade-->
+                <!--Quando detectar mudanças dentro do input da quantidade ele irá calcular o total-->
+
+            </label>
+            <button class="remove-button" (click)="removerProdutoCarrinho(itemCarrinho.id)"><i class="fa-solid fa-xmark">
+            </i></button>
+
+            <!--
+                Adiciona o icone e a estilização do CSS ao botão. Adiciona o evento click que chamará o carrinhoService e a função 
+                removerProdutoCarrinho() e irá passar o parametro produto.id (é o produto que está removendo).
+            -->
+        </li>
+    </ul>
+    <h2 class="cart-total">Total: {{total |currency: "BRL"}}</h2>
+    <!--Diz que irá pegar a propriedade total e converte para brl-->
+
+<button class="buy-button" (click)="comprar()">Comprar</button>
+<!--Adiciona a estilização do CSS ao botão e chama o método comprar -->
+</div>
+
+<ng-template #semProduto>Nenhum produto foi adicionado ao carrinho!</ng-template>
+<!--Cria o template, depois informa que esse template atende o semProduto-->

@@ -1,0 +1,76 @@
+<!--Cria através do comando "ng g component header" e esse cabecalho irá se repetir em todas as páginas-->
+
+<header class="main-header">
+    <h1 class="main-header__title">
+        <span class="main-header__title--blue">ProWay</span> <span class="main-header__title--orange">Computers</span>
+    </h1>
+    <div class="container-menu">
+    <nav class="main-header__menu">
+    <!--Classes utilizadas do "header.component.css"-->
+
+        <ul>
+            <li>
+                <a routerLink="produtos">Produtos</a>
+                <!--routerLink redireciona para o componente-->
+            </li>
+
+            <!--
+            Se quiser escrever de forma mais rapida quando tiver muita tag de formato igual utiliza-se a "abreviação Emmit" utilizando parenteses 
+                com o tipo de tag dentro e multiplica pela quantidade de vezes que ele aparece assim: (p)*5
+            Se tiver uma outra tag dentro como no exemplo abaixo:
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li> 
+            Colocamos no exemplo acima dessa forma: (li>a)*5
+            -->
+            
+            <li>
+                <a routerLink="carrinho">
+                    <i class="fa-sharp fa-solid fa-cart-shopping"></i> <!--Icone de carinho de compras da fontawesome-->
+                    Carrinho
+                    <span class="badge-carrinho">{{carrinhoService.obtemCarrinho().length}}</span>
+                    <!--
+                        Diz que o badge será o carrinhoService e o método obtemCarrinho(). O obtemCarrinho() retorna um vetor, assim coloco
+                        o "length" para saber quantos itens tem dentro do meu vetor.
+                    -->
+                </a>
+            </li>
+            <li>
+                <a routerLink="contato">Contato</a>
+                <!--routerLink redireciona para o componente-->
+            </li>
+
+            <!--
+                Utilizaremos uma biblioteca de icones do site: https://fontawesome.com/start , coloca o e-mail, copia a Tag e coloca dentro do 
+                    index.html do meu projeto na Tag <header> no cabeçalho.
+                Depois selecionamos o icone desejado no site fontawesome, usando a barra de pesquisa e aplicamos o código no site.
+            -->
+
+            <li>
+                <a href="https://pt-br.facebook.com/">
+                    <i class="fa-brands fa-facebook-f"></i> <!--Icone de facebook da fontawesome-->
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/">
+                    <i class="fa-brands fa-instagram"></i> <!--Icone de instagram da fontawesome-->
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/">
+                    <i class="fa-brands fa-twitter"></i> <!--Icone de twitter da fontawesome-->
+                </a>
+            </li>
+            <li>
+                <a href="https://br.linkedin.com/">
+                    <i class="fa-brands fa-linkedin-in"></i> <!--Icone de linkedin da fontawesome-->
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <app-barra-pesquisa></app-barra-pesquisa>
+    <!--Insere o componente barra-pesquisa-->
+    </div>
+</header>
